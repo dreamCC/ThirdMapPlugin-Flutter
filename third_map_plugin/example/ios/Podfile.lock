@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - third_map_plugin (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - third_map_plugin (from `.symlinks/plugins/third_map_plugin/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  third_map_plugin:
+    :path: ".symlinks/plugins/third_map_plugin/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  third_map_plugin: c26a1fb35aa1dc8b68bf831ca9aa55057144bb9e
+
+PODFILE CHECKSUM: 10ae9c18d12c9ffc2275c9a159a3b1e281990db0
+
+COCOAPODS: 1.7.0.rc.1
