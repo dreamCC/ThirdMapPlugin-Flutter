@@ -21,16 +21,13 @@ class ThirdMapPlugin(private var activity: Activity): MethodCallHandler {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
 
-      val channel = MethodChannel(registrar.messenger(), "third_map_plugin")
+      val channel = MethodChannel(registrar.messenger(), "com.zcj.third_map_plugin.cn")
       channel.setMethodCallHandler(ThirdMapPlugin(registrar.activity()))
     }
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-      return
-    }
+
     if (call.method == "hasInstalledMapApp") {
       val resultLists = hasInstalledMapApp()
       result.success(resultLists)
@@ -70,7 +67,8 @@ class ThirdMapPlugin(private var activity: Activity): MethodCallHandler {
   fun openBaiduMap(argumentDic: Map<String,String>) {
     val dlongitude = argumentDic["dlongitude"]
     val dlatitude = argumentDic["dlatitude"]
-    val url = "baidumap://map/direction?destination=$dlatitude,$dlongitude&src=andr.baidu.openAPIdemo"
+    val dName = argumentDic["dName"]
+    val url = "baidumap://map/direction?destination=latlng:$dlatitude,$dlongitude|name:$dName&src=andr.baidu.openAPIdemo"
     val intent = Intent()
     intent.data = Uri.parse(url)
     activity.startActivity(intent)

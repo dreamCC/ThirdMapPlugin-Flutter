@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 class ThirdMapPlugin {
   static const MethodChannel _channel =
-      const MethodChannel('third_map_plugin');
+  const MethodChannel('com.zcj.third_map_plugin.cn');
 
   // 获取当前安装的第三方地图app
   static Future<List<String>> hasInstalledMapApp() async{
@@ -13,11 +13,12 @@ class ThirdMapPlugin {
   }
 
   // 打开百度地图
-  static Future<bool> openBaiduMap({@required String dlongitude, @required String dlatitude}) async{
+  static Future<bool> openBaiduMap({@required String dlongitude, @required String dlatitude, @required String dName}) async{
 
     Map<String, String> arguments = {
       "dlongitude":dlongitude ?? "",
       "dlatitude":dlatitude ?? "",
+      "dName":dName ?? ""
     };
     final bool results = await _channel.invokeMethod('openBaiduMap', arguments);
     return results;
@@ -43,11 +44,6 @@ class ThirdMapPlugin {
     };
     final bool results = await _channel.invokeMethod('openAppleMap', arguments);
     return results;
-  }
-
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
   }
 
 
